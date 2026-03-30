@@ -1,0 +1,2843 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jerry Lin | ReadME</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#735c00",
+              "primary-container": "#d4af37",
+              "on-primary": "#ffffff",
+              surface: "#f9f9f9",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f3f3f3",
+              "surface-container-high": "#e8e8e8",
+              "surface-container-highest": "#e2e2e2",
+              "on-surface": "#1a1c1c",
+              secondary: "#5f5e5e",
+              "outline-variant": "#d0c5af",
+            },
+            fontFamily: {
+              sans: ["Manrope", "sans-serif"],
+              mono: [
+                "ui-monospace",
+                "SFMono-Regular",
+                "Menlo",
+                "Monaco",
+                "monospace",
+              ],
+            },
+            boxShadow: {
+              ambient: "0 12px 40px rgba(26, 28, 28, 0.06)",
+              glow: "0 0 40px rgba(212, 175, 55, 0.15)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+      .glass-nav {
+        background: rgba(249, 249, 249, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-b: 1px solid rgba(208, 197, 175, 0.1);
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #735c00 0%, #d4af37 100%);
+      }
+      .ghost-border {
+        border: 1px solid rgba(208, 197, 175, 0.2);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .fade-in-up {
+        animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-container selection:text-on-primary"
+  >
+    <nav
+      class="fixed top-0 w-full z-50 glass-nav h-20 transition-all duration-300"
+    >
+      <div
+        class="flex justify-between items-center max-w-[90rem] mx-auto px-8 h-full"
+      >
+        <a href="./zh.html" class="flex items-center gap-3">
+          <div
+            class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30"
+          >
+            <img
+              src="./src/JerryLin.png"
+              alt="Jerry Lin"
+              class="w-full h-full object-cover grayscale"
+            />
+          </div>
+          <div
+            class="text-2xl font-extrabold tracking-tighter text-on-surface flex items-baseline"
+          >
+            JerryLin<span class="text-primary font-mono text-xl ml-[1px]"
+              >.md</span
+            >
+          </div>
+        </a>
+        <div class="flex items-center gap-6">
+          <div
+            class="hidden md:flex items-center gap-8 text-[13px] font-medium text-secondary/80"
+          >
+            <a
+              href="tel:+886933349278"
+              class="hover:text-primary transition-colors flex items-center gap-2"
+              ><span class="material-symbols-outlined text-[16px]">call</span>
+              +886 933-349-278</a
+            >
+            <div class="w-1 h-1 rounded-full bg-outline-variant/40"></div>
+            <a
+              href="mailto:orange7539@gmail.com"
+              class="hover:text-primary transition-colors flex items-center gap-2"
+              ><span class="material-symbols-outlined text-[16px]">mail</span>
+              orange7539@gmail.com</a
+            >
+          </div>
+          <div
+            class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-secondary ml-4"
+          >
+            <a href="./index.html" class="hover:text-primary transition-colors"
+              >EN</a
+            >
+            <span class="text-outline-variant/50">/</span>
+            <span class="text-primary">中文</span>
+          </div>
+          <a
+            href="./src/Case/JerryLinCV2026.pdf"
+            download
+            class="hidden sm:inline-block primary-gradient text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm transition-all duration-300 hover:shadow-ambient hover:-translate-y-0.5 ml-2"
+            >下載履歷</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-24">
+      <section
+        id="summary-section"
+        class="max-w-[90rem] mx-auto px-8 py-20 md:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[85vh]"
+      >
+        <div class="lg:col-span-7 pr-4 z-10">
+          <span
+            class="text-primary font-bold text-[18px] uppercase mb-6 block tracking-[0.15em]"
+            >LEAD OF MARTECH @ VML TAIWAN</span
+          >
+          <h1
+            class="text-[5rem] md:text-[7.5rem] font-extrabold tracking-tighter leading-[0.85] mb-8 text-on-surface"
+          >
+            Jerry Lin
+          </h1>
+          <p
+            class="text-2xl md:text-3xl font-light text-secondary max-w-xl leading-[1.4] mb-12"
+          >
+            Leading MarTech<br />Transformation, and Cross-Functional Growth
+          </p>
+          <div>
+            <a
+              href="#core-competencies"
+              class="inline-block primary-gradient text-on-primary px-10 py-5 rounded-lg font-bold tracking-tight shadow-ambient hover:opacity-90 transition-all hover:-translate-y-1 duration-300"
+              >探索經歷</a
+            >
+          </div>
+        </div>
+        <div
+          class="lg:col-span-5 relative group mt-10 lg:mt-0 flex justify-center"
+        >
+          <div
+            class="absolute inset-0 w-[80%] mx-auto bg-primary-container/20 rounded-[2rem] blur-3xl -z-10 group-hover:bg-primary-container/30 transition-all duration-1000 animate-pulse"
+          ></div>
+          <div
+            class="w-[80%] aspect-[3/4] rounded-2xl overflow-hidden shadow-glow relative z-10 bg-surface-container-low ghost-border transform transition-transform duration-700 hover:scale-[1.02]"
+          >
+            <img
+              alt="Jerry Lin Portrait"
+              class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+              src="./src/JerryLin.png"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="metrics-section"
+        class="bg-surface-container-low py-20 mt-10"
+      >
+        <div class="max-w-7xl mx-auto px-8">
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center md:text-left"
+          >
+            <div class="group">
+              <div
+                class="text-4xl md:text-6xl font-extrabold text-primary mb-2 tabular-nums tracking-tighter"
+              >
+                $<span class="counter" data-target="25">0</span>M+
+              </div>
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-secondary group-hover:text-on-surface transition-colors"
+              >
+                歷來最大客戶拓展規模
+              </div>
+            </div>
+            <div class="group">
+              <div
+                class="text-4xl md:text-6xl font-extrabold text-primary mb-2 tabular-nums tracking-tighter"
+              >
+                <span class="counter" data-target="17">0</span>+
+              </div>
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-secondary group-hover:text-on-surface transition-colors"
+              >
+                年工作經驗
+              </div>
+            </div>
+            <div class="group">
+              <div
+                class="text-4xl md:text-6xl font-extrabold text-primary mb-2 tabular-nums tracking-tighter"
+              >
+                <span class="counter" data-target="4">0</span>
+              </div>
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-secondary group-hover:text-on-surface transition-colors"
+              >
+                於 VML 晉升 4 次
+              </div>
+            </div>
+            <div class="group">
+              <div
+                class="text-4xl md:text-6xl font-extrabold text-primary mb-2 tabular-nums tracking-tighter"
+              >
+                <span class="counter" data-target="30">0</span>+
+              </div>
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-secondary group-hover:text-on-surface transition-colors"
+              >
+                服務品牌數
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="core-competencies" class="py-32 bg-surface scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="max-w-3xl mb-16">
+            <h2
+              class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-6"
+            >
+              核心能力
+            </h2>
+            <p class="text-lg text-secondary">
+              在 MarTech、數位轉型、客戶成長與 AI
+              應用執行上，逐步累積出的核心能力。
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="p-10 rounded-2xl bg-surface-container-lowest shadow-ambient hover:-translate-y-1 transition-transform group ghost-border"
+            >
+              <span
+                class="material-symbols-outlined text-primary mb-6 text-4xl block group-hover:scale-110 transition-transform"
+                >hub</span
+              >
+              <h3 class="text-xl font-bold mb-3 tracking-tight">
+                MarTech 解決方案
+              </h3>
+              <p class="text-secondary text-sm leading-relaxed">
+                把商業需求轉化為更實際、可落地的數位與行銷解決方案。
+              </p>
+            </div>
+            <div
+              class="p-10 rounded-2xl bg-surface-container-lowest shadow-ambient hover:-translate-y-1 transition-transform group ghost-border"
+            >
+              <span
+                class="material-symbols-outlined text-primary mb-6 text-4xl block group-hover:scale-110 transition-transform"
+                >layers</span
+              >
+              <h3 class="text-xl font-bold mb-3 tracking-tight">
+                客戶經營與業務拓展
+              </h3>
+              <p class="text-secondary text-sm leading-relaxed">
+                從客戶需求出發，延伸出更完整、價值更高的合作機會。
+              </p>
+            </div>
+            <div
+              class="p-10 rounded-2xl bg-surface-container-lowest shadow-ambient hover:-translate-y-1 transition-transform group ghost-border"
+            >
+              <span
+                class="material-symbols-outlined text-primary mb-6 text-4xl block group-hover:scale-110 transition-transform"
+                >groups</span
+              >
+              <h3 class="text-xl font-bold mb-3 tracking-tight">
+                跨部門協作管理
+              </h3>
+              <p class="text-secondary text-sm leading-relaxed">
+                串聯不同團隊，讓策略、執行與交付可以更穩定地往前推進。
+              </p>
+            </div>
+            <div
+              class="p-10 rounded-2xl bg-surface-container-lowest shadow-ambient hover:-translate-y-1 transition-transform group ghost-border"
+            >
+              <span
+                class="material-symbols-outlined text-primary mb-6 text-4xl block group-hover:scale-110 transition-transform"
+                >grid_view</span
+              >
+              <h3 class="text-xl font-bold mb-3 tracking-tight">
+                網站建置與平台營運
+              </h3>
+              <p class="text-secondary text-sm leading-relaxed">
+                具備豐富的大型網站、活動平台與數位體驗的建置與維運經驗。
+              </p>
+            </div>
+            <div
+              class="p-10 rounded-2xl bg-surface-container-lowest shadow-ambient hover:-translate-y-1 transition-transform group ghost-border"
+            >
+              <span
+                class="material-symbols-outlined text-primary mb-6 text-4xl block group-hover:scale-110 transition-transform"
+                >schema</span
+              >
+              <h3 class="text-xl font-bold mb-3 tracking-tight">
+                CRM / 自動化規劃
+              </h3>
+              <p class="text-secondary text-sm leading-relaxed">
+                規劃客製化 CRM 與行銷自動化流程，提升顧客黏著度與行銷效率。
+              </p>
+            </div>
+            <div
+              class="p-10 rounded-2xl bg-surface-container-lowest shadow-ambient hover:-translate-y-1 transition-transform group ghost-border"
+            >
+              <span
+                class="material-symbols-outlined text-primary mb-6 text-4xl block group-hover:scale-110 transition-transform"
+                >auto_awesome</span
+              >
+              <h3 class="text-xl font-bold mb-3 tracking-tight">AI 應用整合</h3>
+              <p class="text-secondary text-sm leading-relaxed">
+                將 AI
+                應用在工作流程、內容產出與內部工具上，讓事情做得更快也更順。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="career-section"
+        class="py-32 bg-surface-container-low relative scroll-mt-10"
+      >
+        <div class="max-w-[90rem] mx-auto px-8">
+          <div class="text-center mb-24 max-w-3xl mx-auto">
+            <h2
+              class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-6"
+            >
+              職涯經歷
+            </h2>
+            <p class="text-lg text-secondary">
+              我一路從數位平台、客戶經營到 MarTech
+              與數位轉型，逐步累積現在的工作視角與經驗。
+            </p>
+          </div>
+          <div class="flex flex-col md:flex-row gap-16 relative">
+            <div class="md:w-[30%] hidden md:block">
+              <div class="sticky top-32 space-y-2">
+                <a
+                  href="#vml"
+                  class="timeline-link block pl-6 py-4 border-l-2 border-primary opacity-100 transition-all duration-300 hover:bg-surface-container-high/50 rounded-r-xl"
+                  ><div
+                    class="text-xs font-bold text-primary mb-1 uppercase tracking-widest"
+                  >
+                    2017 – 至今
+                  </div>
+                  <div
+                    class="text-xl font-bold text-on-surface mb-1 tracking-tight"
+                  >
+                    VML Taiwan
+                  </div>
+                  <div class="text-sm text-secondary leading-snug">
+                    WPP 集團旗下全球行銷傳播代理商
+                  </div></a
+                >
+                <a
+                  href="#d2c"
+                  class="timeline-link block pl-6 py-4 border-l-2 border-outline-variant/30 opacity-40 hover:opacity-100 transition-all duration-300 hover:bg-surface-container-high/50 rounded-r-xl"
+                  ><div
+                    class="text-xs font-bold text-primary mb-1 uppercase tracking-widest"
+                  >
+                    2014 – 2017
+                  </div>
+                  <div
+                    class="text-xl font-bold text-on-surface mb-1 tracking-tight"
+                  >
+                    D2C Taiwan
+                  </div>
+                  <div class="text-sm text-secondary leading-snug">
+                    日本 NTT DOCOMO 與電通合資的行動行銷代理商
+                  </div></a
+                >
+                <a
+                  href="#yam"
+                  class="timeline-link block pl-6 py-4 border-l-2 border-outline-variant/30 opacity-40 hover:opacity-100 transition-all duration-300 hover:bg-surface-container-high/50 rounded-r-xl"
+                  ><div
+                    class="text-xs font-bold text-primary mb-1 uppercase tracking-widest"
+                  >
+                    2010 – 2014
+                  </div>
+                  <div
+                    class="text-xl font-bold text-on-surface mb-1 tracking-tight"
+                  >
+                    Yam 蕃薯藤
+                  </div>
+                  <div class="text-sm text-secondary leading-snug">
+                    台灣在地數位媒體與網路平台公司
+                  </div></a
+                >
+              </div>
+            </div>
+            <div class="md:w-[70%] space-y-32">
+              <div id="vml" class="career-detail-section scroll-mt-32">
+                <div
+                  class="bg-surface-container-lowest rounded-[2rem] p-10 md:p-14 shadow-ambient ghost-border"
+                >
+                  <div class="mb-10 border-b border-outline-variant/20 pb-10">
+                    <div
+                      class="flex flex-col md:flex-row md:items-baseline justify-between mb-4"
+                    >
+                      <h3
+                        class="text-4xl font-extrabold text-on-surface tracking-tight"
+                      >
+                        VML Taiwan
+                      </h3>
+                      <span
+                        class="text-primary font-bold mt-2 md:mt-0 tracking-widest text-sm uppercase"
+                        >2017 – Present</span
+                      >
+                    </div>
+                    <div class="text-lg font-medium text-secondary mb-6">
+                      WPP 集團旗下全球行銷傳播代理商
+                    </div>
+                    <p class="text-secondary leading-relaxed">
+                      從副業務總監一路晉升至Lead of
+                      MarTech。帶領團隊達成客戶業務成長、數位專案交付，並橫跨
+                      MarTech 導入、數位轉型、網站建置與 CRM 策略等多元領域。
+                    </p>
+                  </div>
+                  <div class="mb-10">
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >badge</span
+                      >
+                      職務晉升
+                    </h4>
+                    <div class="space-y-3">
+                      <div
+                        class="flex justify-between items-center bg-surface-container-low px-4 py-3 rounded-lg"
+                      >
+                        <span class="font-bold text-on-surface"
+                          >Lead of MarTech</span
+                        ><span
+                          class="text-xs font-bold text-secondary uppercase tracking-widest"
+                          >2024 – Present</span
+                        >
+                      </div>
+                      <div
+                        class="flex justify-between items-center px-4 py-2 border-l-2 border-outline-variant/20 ml-2"
+                      >
+                        <span class="font-medium text-secondary"
+                          >Group Account Director</span
+                        ><span class="text-xs font-medium text-secondary"
+                          >2022 – 2024</span
+                        >
+                      </div>
+                      <div
+                        class="flex justify-between items-center px-4 py-2 border-l-2 border-outline-variant/20 ml-2"
+                      >
+                        <span class="font-medium text-secondary"
+                          >Account Director</span
+                        ><span class="text-xs font-medium text-secondary"
+                          >2019 – 2022</span
+                        >
+                      </div>
+                      <div
+                        class="flex justify-between items-center px-4 py-2 border-l-2 border-outline-variant/20 ml-2"
+                      >
+                        <span class="font-medium text-secondary"
+                          >Associate Account Director</span
+                        ><span class="text-xs font-medium text-secondary"
+                          >2017 – 2019</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-10">
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >track_changes</span
+                      >
+                      負責領域
+                    </h4>
+                    <ul class="space-y-4 text-secondary">
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        帶領 MarTech
+                        業務團隊，專注於客戶成長、解決方案規劃與數位專案交付
+                      </li>
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        推動跨部門協作，整合業務、策略、設計與技術開發團隊
+                      </li>
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        洞察商業需求，進而拓展客戶關係與更高價值的科技解決方案
+                      </li>
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        支援企業數位轉型、網站營運、CRM 策略佈局與整合專案執行
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >military_tech</span
+                      >
+                      重大成就
+                    </h4>
+                    <ul
+                      class="space-y-4 text-secondary bg-surface px-6 py-6 rounded-xl border border-outline-variant/10"
+                    >
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        成功接手原本瀕臨流失的 L’Oréal 客戶，並將業務規模拓展至
+                        TWD 2,500 萬以上
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        帶領 JTI 專案從單純維護，擴展為全方位 CRM
+                        與經銷商獎勵系統，業績由 TWD 240萬 成長至 TWD 1,249萬
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        獲得 2021 年 WPP 集團內部 Stock
+                        Award，肯定績效與領導潛力
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        帶領團隊榮獲 2022 L’Oréal Supplier Day The Best Idea
+                        Agency 獎項
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div id="d2c" class="career-detail-section scroll-mt-32">
+                <div
+                  class="bg-surface-container-lowest rounded-[2rem] p-10 md:p-14 shadow-ambient ghost-border"
+                >
+                  <div class="mb-10 border-b border-outline-variant/20 pb-10">
+                    <div
+                      class="flex flex-col md:flex-row md:items-baseline justify-between mb-4"
+                    >
+                      <h3
+                        class="text-4xl font-extrabold text-on-surface tracking-tight"
+                      >
+                        D2C Taiwan
+                      </h3>
+                      <span
+                        class="text-primary font-bold mt-2 md:mt-0 tracking-widest text-sm uppercase"
+                        >2014 – 2017</span
+                      >
+                    </div>
+                    <div class="text-lg font-medium text-secondary mb-6">
+                      日本 NTT DOCOMO 與電通合資之行動行銷代理商
+                    </div>
+                    <p class="text-secondary leading-relaxed">
+                      在 D2C Taiwan
+                      時期，主要負責數位專案規劃、提案與客戶溝通，累積網站、社群與整合型行銷專案的執行經驗，也進一步建立從提案到落地交付的完整工作能力。
+                    </p>
+                  </div>
+                  <div class="mb-10">
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >badge</span
+                      >
+                      職務
+                    </h4>
+                    <div
+                      class="flex items-center bg-surface-container-low px-4 py-3 rounded-lg w-fit"
+                    >
+                      <span class="font-bold text-on-surface"
+                        >資深專案經理 (Senior Account Manager)</span
+                      >
+                    </div>
+                  </div>
+                  <div class="mb-10">
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >track_changes</span
+                      >
+                      負責領域
+                    </h4>
+                    <ul class="space-y-4 text-secondary">
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        負責數位專案規劃、客戶溝通與提案執行
+                      </li>
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        統籌專案提案、資源調度與後續帳戶發展
+                      </li>
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        建立整合性的交付流程，銜接策略規劃與技術維運
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >military_tech</span
+                      >
+                      重大成就
+                    </h4>
+                    <ul
+                      class="space-y-4 text-secondary bg-surface px-6 py-6 rounded-xl border border-outline-variant/10"
+                    >
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        參與獲頒全球權威 FWA Award 獎項的 HONDA 行銷活動 App
+                        專案
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        累積扎實的數位專案落地、提案開發與客戶服務整合經驗
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div id="yam" class="career-detail-section scroll-mt-32">
+                <div
+                  class="bg-surface-container-lowest rounded-[2rem] p-10 md:p-14 shadow-ambient ghost-border"
+                >
+                  <div class="mb-10 border-b border-outline-variant/20 pb-10">
+                    <div
+                      class="flex flex-col md:flex-row md:items-baseline justify-between mb-4"
+                    >
+                      <h3
+                        class="text-4xl font-extrabold text-on-surface tracking-tight"
+                      >
+                        Yam Inc.
+                      </h3>
+                      <span
+                        class="text-primary font-bold mt-2 md:mt-0 tracking-widest text-sm uppercase"
+                        >2010 – 2014</span
+                      >
+                    </div>
+                    <div class="text-lg font-medium text-secondary mb-6">
+                      Yam 蕃薯藤 (台灣在地數位媒體與網路平台)
+                    </div>
+                    <p class="text-secondary leading-relaxed">
+                      在 Yam
+                      蕃薯藤期間，從產品規劃、專案管理、業務服務到平台營運都有實際參與，建立了我對數位產品、內容平台與網路商業模式的基礎理解。
+                    </p>
+                  </div>
+                  <div class="mb-10">
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >badge</span
+                      >
+                      職務
+                    </h4>
+                    <div class="flex gap-4 flex-wrap">
+                      <div
+                        class="flex items-center bg-surface-container-low px-4 py-3 rounded-lg"
+                      >
+                        <span class="font-bold text-on-surface"
+                          >產品 / 專案經理</span
+                        >
+                      </div>
+                      <div
+                        class="flex items-center bg-surface-container-low px-4 py-3 rounded-lg"
+                      >
+                        <span class="font-bold text-on-surface"
+                          >業務 (Account)</span
+                        >
+                      </div>
+                      <div
+                        class="flex items-center bg-surface-container-low px-4 py-3 rounded-lg"
+                      >
+                        <span class="font-bold text-on-surface"
+                          >企劃 (Planner)</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-10">
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >track_changes</span
+                      >
+                      負責領域
+                    </h4>
+                    <ul class="space-y-4 text-secondary">
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        跨足產品企劃、專案管理、業務客服與平台維運
+                      </li>
+                      <li class="flex items-start gap-4">
+                        <span
+                          class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"
+                        ></span>
+                        參與新興數位平台與商業模式的從零到一開發
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4
+                      class="text-sm font-bold text-on-surface uppercase tracking-widest mb-5 flex items-center gap-2"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary text-lg"
+                        >military_tech</span
+                      >
+                      重大成就
+                    </h4>
+                    <ul
+                      class="space-y-4 text-secondary bg-surface px-6 py-6 rounded-xl border border-outline-variant/10"
+                    >
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        建置團購電商平台，單一商品單日創造 TWD 400 萬營收
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="material-symbols-outlined text-primary text-xl shrink-0"
+                          >check_circle</span
+                        >
+                        打造並推出知名旅遊社群平台「輕旅行」
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="showcase-section" class="py-32 bg-surface scroll-mt-10">
+        <div class="max-w-[90rem] mx-auto px-8">
+          <div class="mb-12">
+            <h2
+              class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4"
+            >
+              專案作品集
+            </h2>
+            <p class="text-lg text-secondary max-w-2xl">
+              精選 AI 導入、網站建置、CRM 規劃與數位成長案例。
+            </p>
+          </div>
+
+          <div
+            class="flex flex-wrap gap-2 mb-16 border-b border-outline-variant/20 pb-6"
+          >
+            <button
+              class="filter-btn bg-on-surface text-surface hover:bg-on-surface/90 px-5 py-2 rounded-full font-bold text-sm transition-colors"
+              data-filter="all"
+            >
+              全部
+            </button>
+            <button
+              class="filter-btn text-secondary hover:bg-surface-container-high px-5 py-2 rounded-full font-bold text-sm transition-colors"
+              data-filter="ai"
+            >
+              AI / 自動化
+            </button>
+            <button
+              class="filter-btn text-secondary hover:bg-surface-container-high px-5 py-2 rounded-full font-bold text-sm transition-colors"
+              data-filter="website"
+            >
+              網站 / 平台
+            </button>
+            <button
+              class="filter-btn text-secondary hover:bg-surface-container-high px-5 py-2 rounded-full font-bold text-sm transition-colors"
+              data-filter="crm"
+            >
+              CRM / 會員經營
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="case-card lg:col-span-3 md:col-span-2 mb-8 fade-in-up"
+              data-category="ai"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-[2rem] p-8 md:p-12 ghost-border shadow-ambient"
+              >
+                <div
+                  class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+                >
+                  <div
+                    class="lg:col-span-5 order-2 lg:order-1 lg:sticky lg:top-32"
+                  >
+                    <div
+                      class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6"
+                    >
+                      精選案例• AI / 自動化
+                    </div>
+                    <h3
+                      class="text-3xl lg:text-4xl font-extrabold mb-4 tracking-tight text-on-surface"
+                    >
+                      AI-Enabled Project Finance Management System
+                    </h3>
+                    <p class="text-secondary leading-relaxed mb-8">
+                      獨立使用 Vibe code
+                      建置，將專案營收、成本、毛利與採購流程集中化，取代過去破碎的
+                      Excel 追蹤方式，提供清晰可行的財務管理流程。
+                    </p>
+                    <div class="mb-8 p-4 bg-surface-container-low rounded-xl">
+                      <div
+                        class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1"
+                      >
+                        負責角色
+                      </div>
+                      <div class="text-sm text-on-surface font-bold">
+                        端到端獨立建置 / 流程設計 / AI 輔助開發
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                      <span
+                        class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+                        >Vibe Code</span
+                      >
+                      <span
+                        class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+                        >Internal Tool</span
+                      >
+                      <span
+                        class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+                        >Finance Ops</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-4"
+                  >
+                    <div
+                      class="aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+                    >
+                      <div
+                        class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+                      >
+                        <div
+                          class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                          data-caption="獨立使用 Vibe code 建置，將專案營收、成本、毛利與採購流程集中化，取代過去破碎的 Excel 追蹤方式，提供清晰可行的財務管理流程。"
+                        >
+                          <video
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                            tabindex="-1"
+                          >
+                            <source
+                              src="./src/Case/FinCoop/FACasefilm.mp4"
+                              type="video/mp4"
+                            />
+                          </video>
+                          <video
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                          >
+                            <source
+                              src="./src/Case/FinCoop/FACasefilm.mp4"
+                              type="video/mp4"
+                            />
+                          </video>
+                          <div
+                            class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-1 shadow-sm"
+                          >
+                            <span class="material-symbols-outlined text-[12px]"
+                              >play_circle</span
+                            >
+                            系統操作展示
+                          </div>
+                        </div>
+                        <div
+                          class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                          data-caption="將總營收、支出、淨利與 YTD 數據集中於單一儀表板。<br>取代分散的追蹤表單，提供更清晰的財務快照。"
+                        >
+                          <img
+                            src="./src/Case/FinCoop/Dashboard.png"
+                            class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                            aria-hidden="true"
+                          />
+                          <img
+                            alt="Dashboard"
+                            class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                            src="./src/Case/FinCoop/Dashboard.png"
+                          />
+                        </div>
+                        <div
+                          class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                          data-caption="快速呈現投資組合中最具盈利能力的專案。<br>協助團隊根據利潤表現與商業價值排定優先順序。"
+                        >
+                          <img
+                            src="./src/Case/FinCoop/ProjectCard.png"
+                            class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                            aria-hidden="true"
+                          />
+                          <img
+                            alt="Project Card"
+                            class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                            src="./src/Case/FinCoop/ProjectCard.png"
+                          />
+                        </div>
+                        <div
+                          class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                          data-caption="在單一視窗提供每個專案的詳細收入與支出紀錄。<br>支援更簡潔的追蹤、快速更新與更好的專案利潤可視性。"
+                        >
+                          <img
+                            src="./src/Case/FinCoop/Projectmanager.png"
+                            class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                            aria-hidden="true"
+                          />
+                          <img
+                            alt="Project Manager"
+                            class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                            src="./src/Case/FinCoop/Projectmanager.png"
+                          />
+                        </div>
+                        <div
+                          class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                          data-caption="自動生成包含關鍵專案與供應商細節的結構化請款訊息。<br>減少重複性的人工作業，加速團隊採購流程。"
+                        >
+                          <img
+                            src="./src/Case/FinCoop/BillingProcess.png"
+                            class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                            aria-hidden="true"
+                          />
+                          <img
+                            alt="Billing Process"
+                            class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                            src="./src/Case/FinCoop/BillingProcess.png"
+                          />
+                        </div>
+                        <div
+                          class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                          data-caption="跨客戶與帳戶按月追蹤專案認列狀況。<br>使財務對帳更加透明、結構化且易於審查。"
+                        >
+                          <img
+                            src="./src/Case/FinCoop/monthlyTable.png"
+                            class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                            aria-hidden="true"
+                          />
+                          <img
+                            alt="Monthly Table"
+                            class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                            src="./src/Case/FinCoop/monthlyTable.png"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+                      >
+                        <span class="material-symbols-outlined text-xl"
+                          >chevron_left</span
+                        >
+                      </button>
+                      <button
+                        class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+                      >
+                        <span class="material-symbols-outlined text-xl"
+                          >chevron_right</span
+                        >
+                      </button>
+                      <div
+                        class="dots-container absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-surface-container-lowest/20 px-3 py-2 rounded-full backdrop-blur-sm"
+                      >
+                        <button
+                          class="carousel-dot w-4 h-2 rounded-full transition-all duration-300 bg-primary shadow-sm"
+                        ></button
+                        ><button
+                          class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+                        ></button
+                        ><button
+                          class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+                        ></button
+                        ><button
+                          class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+                        ></button
+                        ><button
+                          class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+                        ></button
+                        ><button
+                          class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+                        ></button>
+                      </div>
+                    </div>
+                    <div
+                      class="carousel-caption text-sm text-secondary leading-relaxed transition-opacity duration-300 min-h-[3rem] px-3 border-l-2 border-primary/40 mt-1"
+                    >
+                      獨立使用 Vibe code
+                      建置，將專案營收、成本、毛利與採購流程集中化，取代過去破碎的
+                      Excel 追蹤方式，提供清晰可行的財務管理流程。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="case-card group cursor-pointer fade-in-up"
+              data-category="ai"
+              style="animation-delay: 0.1s"
+              onclick="openModal('modal-auto-edm')"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-6 ghost-border shadow-ambient h-full flex flex-col hover:-translate-y-1 transition-transform"
+              >
+                <div
+                  class="aspect-video rounded-xl overflow-hidden mb-6 bg-surface-container-highest relative flex items-center justify-center"
+                >
+                  <img
+                    src="./src/Case/autoEDM/EDM-AI-Agent.png"
+                    class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 transition-all duration-700 group-hover:opacity-60"
+                    aria-hidden="true"
+                  />
+                  <img
+                    alt="EDM AI Agent"
+                    class="relative z-10 w-full h-full object-contain p-2 drop-shadow-sm transition-transform duration-700 group-hover:scale-105"
+                    src="./src/Case/autoEDM/EDM-AI-Agent.png"
+                  />
+                  <div
+                    class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary"
+                  >
+                    AI / 自動化
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors"
+                >
+                  AI-Driven EDM Content & HTML Automation System
+                </h3>
+                <p
+                  class="text-secondary text-sm leading-relaxed mb-6 flex-grow"
+                >
+                  利用 AI Agent 從指定來源抓取素材並自動生成 EDM
+                  文案，後續串接自建的自動排版與 HTML
+                  產出工具，將從內容建立到前端輸出的流程完全自動化。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >AI Agent</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >自動化工作流</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >AutoRDM</span
+                  >
+                </div>
+                <button
+                  class="inline-flex items-center gap-2 font-bold text-xs tracking-tight text-on-surface hover:text-primary transition-colors w-max"
+                >
+                  查看作品
+                  <span class="material-symbols-outlined text-sm"
+                    >north_east</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="case-card group cursor-pointer fade-in-up"
+              data-category="ai"
+              style="animation-delay: 0.2s"
+              onclick="openModal('modal-vml-class')"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-6 ghost-border shadow-ambient h-full flex flex-col hover:-translate-y-1 transition-transform"
+              >
+                <div
+                  class="aspect-video rounded-xl overflow-hidden mb-6 bg-surface-container-highest relative flex items-center justify-center"
+                >
+                  <img
+                    src="./src/Case/VMLClass/VMLClass-index.png"
+                    class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 transition-all duration-700 group-hover:opacity-60"
+                    aria-hidden="true"
+                  />
+                  <img
+                    alt="VML Class"
+                    class="relative z-10 w-full h-full object-contain p-2 drop-shadow-sm transition-transform duration-700 group-hover:scale-105"
+                    src="./src/Case/VMLClass/VMLClass-index.png"
+                  />
+                  <div
+                    class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary"
+                  >
+                    AI / 自動化
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors"
+                >
+                  VML Class 培訓平台
+                </h3>
+                <p
+                  class="text-secondary text-sm leading-relaxed mb-6 flex-grow"
+                >
+                  建立為內部使用的集中式學習入口網站，涵蓋課程註冊、學習資源、生產力工具與產業洞察，協助團隊更有效率地取得培訓內容與內部資源。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >Vibe Code</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >內部網站</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >學習入口</span
+                  >
+                </div>
+                <button
+                  class="inline-flex items-center gap-2 font-bold text-xs tracking-tight text-on-surface hover:text-primary transition-colors w-max"
+                >
+                  查看作品
+                  <span class="material-symbols-outlined text-sm"
+                    >north_east</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="case-card group cursor-pointer fade-in-up"
+              data-category="website"
+              style="animation-delay: 0.3s"
+              onclick="openModal('modal-loreal')"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-6 ghost-border shadow-ambient h-full flex flex-col hover:-translate-y-1 transition-transform"
+              >
+                <div
+                  class="aspect-video rounded-xl overflow-hidden mb-6 bg-surface-container-highest relative flex items-center justify-center"
+                >
+                  <img
+                    src="./src/Case/LOREAL/LOREAL-cover.png"
+                    class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 transition-all duration-700 group-hover:opacity-60"
+                    aria-hidden="true"
+                  />
+                  <img
+                    alt="L’Oréal E-Commerce"
+                    class="relative z-10 w-full h-full object-contain p-2 drop-shadow-sm transition-transform duration-700 group-hover:scale-105"
+                    src="./src/Case/LOREAL/LOREAL-cover.png"
+                  />
+                  <div
+                    class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary"
+                  >
+                    網站 / 平台
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors"
+                >
+                  L’Oréal 萊雅集團電子商務
+                </h3>
+                <p
+                  class="text-secondary text-sm leading-relaxed mb-6 flex-grow"
+                >
+                  接手原本面臨流失風險的萊雅集團電商業務後，帶領團隊重新建立客戶信任與交付穩定性，將服務範圍從
+                  2 個品牌拓展至 6 個品牌，並穩定維持超過 TWD 2,500 萬的年營收。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >電子商務</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >業務拓展</span
+                  >
+                </div>
+                <button
+                  class="inline-flex items-center gap-2 font-bold text-xs tracking-tight text-on-surface hover:text-primary transition-colors w-max"
+                >
+                  查看作品
+                  <span class="material-symbols-outlined text-sm"
+                    >north_east</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="case-card group cursor-pointer fade-in-up"
+              data-category="website"
+              style="animation-delay: 0.4s"
+              onclick="openModal('modal-asus')"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-6 ghost-border shadow-ambient h-full flex flex-col hover:-translate-y-1 transition-transform"
+              >
+                <div
+                  class="aspect-video rounded-xl overflow-hidden mb-6 bg-surface-container-highest relative flex items-center justify-center"
+                >
+                  <img
+                    src="./src/Case/ASUS/Business site.png"
+                    class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 transition-all duration-700 group-hover:opacity-60"
+                    aria-hidden="true"
+                  />
+                  <img
+                    alt="ASUS Business Site"
+                    class="relative z-10 w-full h-full object-contain p-2 drop-shadow-sm transition-transform duration-700 group-hover:scale-105"
+                    src="./src/Case/ASUS/Business site.png"
+                  />
+                  <div
+                    class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary"
+                  >
+                    網站 / 平台
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors"
+                >
+                  ASUS 華碩商用官方網站
+                </h3>
+                <p
+                  class="text-secondary text-sm leading-relaxed mb-6 flex-grow"
+                >
+                  帶領團隊進行華碩商用網站的策略規劃與設計，涵蓋商業分析、UX
+                  策略與 UI
+                  設計。針對不同產業需求量身打造，提供更具關聯性且高效的網站體驗。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >B2B 網站</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >UX/UI 設計</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >商業分析</span
+                  >
+                </div>
+                <button
+                  class="inline-flex items-center gap-2 font-bold text-xs tracking-tight text-on-surface hover:text-primary transition-colors w-max"
+                >
+                  查看作品
+                  <span class="material-symbols-outlined text-sm"
+                    >north_east</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="case-card group cursor-pointer fade-in-up"
+              data-category="website"
+              style="animation-delay: 0.5s"
+              onclick="openModal('modal-ford')"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-6 ghost-border shadow-ambient h-full flex flex-col hover:-translate-y-1 transition-transform"
+              >
+                <div
+                  class="aspect-video rounded-xl overflow-hidden mb-6 bg-surface-container-highest relative flex items-center justify-center"
+                >
+                  <img
+                    src="./src/Case/FORD/FORD-cover.png"
+                    class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 transition-all duration-700 group-hover:opacity-60"
+                    aria-hidden="true"
+                  />
+                  <img
+                    alt="FORD Official Site Revamp"
+                    class="relative z-10 w-full h-full object-contain p-2 drop-shadow-sm transition-transform duration-700 group-hover:scale-105"
+                    src="./src/Case/FORD/FORD-cover.png"
+                  />
+                  <div
+                    class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary"
+                  >
+                    網站 / 平台
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors"
+                >
+                  FORD 台灣福特官網改版與 CMS 轉型
+                </h3>
+                <p
+                  class="text-secondary text-sm leading-relaxed mb-6 flex-grow"
+                >
+                  重新打造福特台灣官方網站，從商業分析、UX/UI
+                  設計到重新建置客製化 CMS 後台。此專案解決了舊有 Adobe AEM
+                  的架構限制，降低維護成本，並建立更具彈性的現代化網站。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >網站改版</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >CMS 系統轉換</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >UX/UI 設計</span
+                  >
+                </div>
+                <button
+                  class="inline-flex items-center gap-2 font-bold text-xs tracking-tight text-on-surface hover:text-primary transition-colors w-max"
+                >
+                  查看作品
+                  <span class="material-symbols-outlined text-sm"
+                    >north_east</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="case-card group cursor-pointer fade-in-up"
+              data-category="crm"
+              style="animation-delay: 0.6s"
+              onclick="openModal('modal-samsung')"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-6 ghost-border shadow-ambient h-full flex flex-col hover:-translate-y-1 transition-transform"
+              >
+                <div
+                  class="aspect-video rounded-xl overflow-hidden mb-6 bg-surface-container-highest relative flex items-center justify-center"
+                >
+                  <img
+                    src="./src/Case/Samsung/Samsung-cover.png"
+                    class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 transition-all duration-700 group-hover:opacity-60"
+                    aria-hidden="true"
+                  />
+                  <img
+                    alt="Samsung CRM Planning"
+                    class="relative z-10 w-full h-full object-contain p-2 drop-shadow-sm transition-transform duration-700 group-hover:scale-105"
+                    src="./src/Case/Samsung/Samsung-cover.png"
+                  />
+                  <div
+                    class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary"
+                  >
+                    CRM / 會員經營
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors"
+                >
+                  Samsung 台灣三星 CRM 規劃
+                </h3>
+                <p
+                  class="text-secondary text-sm leading-relaxed mb-6 flex-grow"
+                >
+                  主導台灣三星旗艦機上市的 CRM
+                  策略規劃。透過將產品功能精準映射至不同目標受眾，分析受眾與品牌的關聯程度，規劃跨越
+                  EDM、LINE 推播與 App 的多波段溝通計畫。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >CRM 策略規劃</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >受眾輪廓分析</span
+                  >
+                </div>
+                <button
+                  class="inline-flex items-center gap-2 font-bold text-xs tracking-tight text-on-surface hover:text-primary transition-colors w-max"
+                >
+                  查看作品
+                  <span class="material-symbols-outlined text-sm"
+                    >north_east</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="case-card group cursor-pointer fade-in-up"
+              data-category="crm"
+              style="animation-delay: 0.7s"
+              onclick="openModal('modal-jti')"
+            >
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-6 ghost-border shadow-ambient h-full flex flex-col hover:-translate-y-1 transition-transform"
+              >
+                <div
+                  class="aspect-video rounded-xl overflow-hidden mb-6 bg-surface-container-highest relative flex items-center justify-center"
+                >
+                  <img
+                    src="./src/Case/JTI/JTI.png"
+                    class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 transition-all duration-700 group-hover:opacity-60"
+                    aria-hidden="true"
+                  />
+                  <img
+                    alt="JTI CRM & Incentive Solution"
+                    class="relative z-10 w-full h-full object-contain p-2 drop-shadow-sm transition-transform duration-700 group-hover:scale-105"
+                    src="./src/Case/JTI/JTI.png"
+                  />
+                  <div
+                    class="absolute top-4 left-4 z-20 bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary"
+                  >
+                    CRM / 會員經營
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors"
+                >
+                  JTI 傑太日菸 CRM 與獎勵系統發展
+                </h3>
+                <p
+                  class="text-secondary text-sm leading-relaxed mb-6 flex-grow"
+                >
+                  將 JTI 的服務範疇從純粹的系統維護，拓展至更廣泛的 CRM
+                  與經銷商獎勵方案。藉由深化客戶在企劃與開發能力的信任，成功將專案拓展為常態性的會員經營計畫。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >CRM 策略規劃</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >獎勵系統機制</span
+                  ><span
+                    class="bg-surface-container-low px-2 py-1 rounded-md text-[10px] font-bold text-secondary"
+                    >客戶關係拓展</span
+                  >
+                </div>
+                <button
+                  class="inline-flex items-center gap-2 font-bold text-xs tracking-tight text-on-surface hover:text-primary transition-colors w-max"
+                >
+                  查看作品
+                  <span class="material-symbols-outlined text-sm"
+                    >north_east</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact-section"
+        class="py-32 bg-surface-container-low scroll-mt-20"
+      >
+        <div class="max-w-4xl mx-auto px-8 text-center">
+          <h2
+            class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 text-on-surface"
+          >
+            歡迎聯絡交流
+          </h2>
+          <p
+            class="text-xl md:text-2xl text-secondary leading-relaxed mb-16 font-light"
+          >
+            如果你也關注 MarTech、數位轉型、AI 導入或業務成長，歡迎一起交流。
+          </p>
+          <div
+            class="flex flex-col md:flex-row gap-8 md:gap-12 justify-center items-center"
+          >
+            <a
+              href="tel:+886933349278"
+              class="flex items-center gap-3 text-on-surface hover:text-primary hover:-translate-y-1 transition-all duration-300"
+              ><span class="material-symbols-outlined text-primary text-3xl"
+                >call</span
+              ><span class="font-bold text-xl tracking-tight"
+                >+886 933-349-278</span
+              ></a
+            >
+            <div
+              class="hidden md:block w-1.5 h-1.5 rounded-full bg-outline-variant/50"
+            ></div>
+            <a
+              href="mailto:orange7539@gmail.com"
+              class="flex items-center gap-3 text-on-surface hover:text-primary hover:-translate-y-1 transition-all duration-300"
+              ><span class="material-symbols-outlined text-primary text-3xl"
+                >mail</span
+              ><span class="font-bold text-xl tracking-tight"
+                >orange7539@gmail.com</span
+              ></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="w-full py-12 bg-surface-container-high border-t border-outline-variant/10"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center px-8 max-w-[90rem] mx-auto"
+      >
+        <div
+          class="text-lg font-bold tracking-tighter text-on-surface mb-4 md:mb-0"
+        >
+          JerryLin.md
+        </div>
+        <div
+          class="font-sans text-xs uppercase tracking-widest text-secondary mb-4 md:mb-0"
+        >
+          © 2026 Jerry Lin, thanks for stopping by.
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="font-sans text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors"
+            href="#"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="modal-auto-edm"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 md:p-12 modal-root"
+    >
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity opacity-0 backdrop"
+        onclick="closeModal('modal-auto-edm')"
+      ></div>
+      <div
+        class="modal-content relative w-full max-w-6xl max-h-[90vh] bg-surface rounded-[2rem] shadow-2xl overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95 opacity-0 duration-300 ease-out"
+      >
+        <button
+          onclick="closeModal('modal-auto-edm')"
+          class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-surface-container-high hover:bg-outline-variant/30 rounded-full flex items-center justify-center text-on-surface z-50 transition-colors"
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div
+          class="w-full md:w-[40%] bg-surface-container-lowest p-8 pt-16 md:p-12 flex flex-col md:overflow-y-auto no-scrollbar shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/10"
+        >
+          <div
+            class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 w-max"
+          >
+            AI / 自動化
+          </div>
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-on-surface mb-6"
+          >
+            AI-Driven EDM Content & HTML Automation System
+          </h2>
+          <p class="text-secondary leading-relaxed mb-8">
+            利用 AI Agent 從指定來源抓取素材並自動生成 EDM
+            文案，後續串接自建的自動排版與 HTML
+            產出工具，將從內容建立到前端輸出的流程完全自動化。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >AI Agent</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >自動化工作流</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >AutoRDM</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-[60%] bg-surface p-6 md:p-10 flex flex-col md:justify-center relative md:overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-col gap-10 md:hidden pb-8">
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/autoEDM/EDM-AI-Agent.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/autoEDM/EDM-AI-Agent.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+              <p
+                class="text-sm text-secondary mt-4 border-l-2 border-primary/40 pl-3 leading-relaxed"
+              >
+                利用 AI 代理從指定來源擷取內容，並生成初步的 EDM 文案結構。
+              </p>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/autoEDM/AGC.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/autoEDM/AGC.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+              <p
+                class="text-sm text-secondary mt-4 border-l-2 border-primary/40 pl-3 leading-relaxed"
+              >
+                自動化生成與結構化內容資產。
+              </p>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/autoEDM/autolayout.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/autoEDM/autolayout.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+              <p
+                class="text-sm text-secondary mt-4 border-l-2 border-primary/40 pl-3 leading-relaxed"
+              >
+                與自建的排版工具串接，自動排列內容區塊。
+              </p>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/autoEDM/autoHTML.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/autoEDM/autoHTML.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+              <p
+                class="text-sm text-secondary mt-4 border-l-2 border-primary/40 pl-3 leading-relaxed"
+              >
+                產生乾淨、可直接部署的 HTML 程式碼，完成前端輸出流程。
+              </p>
+            </div>
+          </div>
+          <div
+            class="hidden md:block aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+          >
+            <div
+              class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+            >
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                data-caption="利用 AI 代理從指定來源擷取內容，並生成初步的 EDM 文案結構。"
+              >
+                <img
+                  src="./src/Case/autoEDM/EDM-AI-Agent.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/autoEDM/EDM-AI-Agent.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                data-caption="自動化生成與結構化內容資產。"
+              >
+                <img
+                  src="./src/Case/autoEDM/AGC.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/autoEDM/AGC.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                data-caption="與自建的排版工具串接，自動排列內容區塊。"
+              >
+                <img
+                  src="./src/Case/autoEDM/autolayout.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/autoEDM/autolayout.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                data-caption="產生乾淨、可直接部署的 HTML 程式碼，完成前端輸出流程。"
+              >
+                <img
+                  src="./src/Case/autoEDM/autoHTML.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/autoEDM/autoHTML.png"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >chevron_left</span
+              >
+            </button>
+            <button
+              class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >chevron_right</span
+              >
+            </button>
+            <div
+              class="dots-container absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-surface-container-lowest/20 px-3 py-2 rounded-full backdrop-blur-sm"
+            >
+              <button
+                class="carousel-dot w-4 h-2 rounded-full transition-all duration-300 bg-primary shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button>
+            </div>
+          </div>
+          <div
+            class="carousel-caption hidden md:block text-sm text-secondary leading-relaxed transition-opacity duration-300 min-h-[3rem] px-4 border-l-2 border-primary/40 mt-6"
+          >
+            利用 AI 代理從指定來源擷取內容，並生成初步的 EDM 文案結構。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal-vml-class"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 md:p-12 modal-root"
+    >
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity opacity-0 backdrop"
+        onclick="closeModal('modal-vml-class')"
+      ></div>
+      <div
+        class="modal-content relative w-full max-w-6xl max-h-[90vh] bg-surface rounded-[2rem] shadow-2xl overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95 opacity-0 duration-300 ease-out"
+      >
+        <button
+          onclick="closeModal('modal-vml-class')"
+          class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-surface-container-high hover:bg-outline-variant/30 rounded-full flex items-center justify-center text-on-surface z-50 transition-colors"
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div
+          class="w-full md:w-[40%] bg-surface-container-lowest p-8 pt-16 md:p-12 flex flex-col md:overflow-y-auto no-scrollbar shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/10"
+        >
+          <div
+            class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 w-max"
+          >
+            AI / 自動化
+          </div>
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-on-surface mb-6"
+          >
+            VML Class 培訓平台
+          </h2>
+          <p class="text-secondary leading-relaxed mb-8">
+            建立為內部使用的集中式學習入口網站，涵蓋課程註冊、學習資源、生產力工具與產業洞察，協助團隊更有效率地取得培訓內容與內部資源。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >Vibe Code</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >內部網站</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >學習入口</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-[60%] bg-surface p-6 md:p-10 flex flex-col md:justify-center relative md:overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-col gap-10 md:hidden pb-8">
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-index.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/VMLClass/VMLClass-index.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-course.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/VMLClass/VMLClass-course.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-detail.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/VMLClass/VMLClass-detail.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-backend.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/VMLClass/VMLClass-backend.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <a
+              href="https://vml-class-portal.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center justify-center gap-2 font-bold text-sm bg-primary-container text-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-colors"
+              >前往網站
+              <span class="material-symbols-outlined text-sm"
+                >open_in_new</span
+              ></a
+            >
+          </div>
+          <div
+            class="hidden md:block aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+          >
+            <div
+              class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+            >
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-index.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/VMLClass/VMLClass-index.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-course.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/VMLClass/VMLClass-course.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-detail.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/VMLClass/VMLClass-detail.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/VMLClass/VMLClass-backend.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/VMLClass/VMLClass-backend.png"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >chevron_left</span
+              >
+            </button>
+            <button
+              class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >chevron_right</span
+              >
+            </button>
+            <div
+              class="dots-container absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-surface-container-lowest/20 px-3 py-2 rounded-full backdrop-blur-sm"
+            >
+              <button
+                class="carousel-dot w-4 h-2 rounded-full transition-all duration-300 bg-primary shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button>
+            </div>
+          </div>
+          <div class="hidden md:flex justify-end mt-4">
+            <a
+              href="https://vml-class-portal.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 font-bold text-sm bg-primary-container text-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-colors"
+              >前往網站
+              <span class="material-symbols-outlined text-sm"
+                >open_in_new</span
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal-loreal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 md:p-12 modal-root"
+    >
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity opacity-0 backdrop"
+        onclick="closeModal('modal-loreal')"
+      ></div>
+      <div
+        class="modal-content relative w-full max-w-6xl max-h-[90vh] bg-surface rounded-[2rem] shadow-2xl overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95 opacity-0 duration-300 ease-out"
+      >
+        <button
+          onclick="closeModal('modal-loreal')"
+          class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-surface-container-high hover:bg-outline-variant/30 rounded-full flex items-center justify-center text-on-surface z-50 transition-colors"
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div
+          class="w-full md:w-[40%] bg-surface-container-lowest p-8 pt-16 md:p-12 flex flex-col md:overflow-y-auto no-scrollbar shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/10"
+        >
+          <div
+            class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 w-max"
+          >
+            網站 / 平台
+          </div>
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-on-surface mb-6"
+          >
+            L’Oréal 萊雅集團電子商務
+          </h2>
+          <p class="text-secondary leading-relaxed mb-8">
+            接手面臨流失危機的萊雅集團電商業務，帶領團隊重建客戶信任與交付品質。將服務範圍從
+            2 個品牌擴展至 6 個品牌，同時維持超過 TWD 2,500萬 的年營收。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >電子商務</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >業務拓展</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-[60%] bg-surface p-6 md:p-10 flex flex-col md:justify-center relative md:overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-col gap-10 md:hidden pb-8">
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/LOREAL/LOREAL-cover.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/LOREAL/LOREAL-cover.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/LOREAL/LOREAL-PRADA.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/LOREAL/LOREAL-PRADA.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/LOREAL/LOREAL-YSL.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/LOREAL/LOREAL-YSL.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="hidden md:block aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+          >
+            <div
+              class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+            >
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/LOREAL/LOREAL-cover.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/LOREAL/LOREAL-cover.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/LOREAL/LOREAL-PRADA.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/LOREAL/LOREAL-PRADA.png"
+                />
+              </div>
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/LOREAL/LOREAL-YSL.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/LOREAL/LOREAL-YSL.png"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >chevron_left</span
+              >
+            </button>
+            <button
+              class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur shadow-sm flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-20"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >chevron_right</span
+              >
+            </button>
+            <div
+              class="dots-container absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-surface-container-lowest/20 px-3 py-2 rounded-full backdrop-blur-sm"
+            >
+              <button
+                class="carousel-dot w-4 h-2 rounded-full transition-all duration-300 bg-primary shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button
+              ><button
+                class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-white/60 hover:bg-white shadow-sm"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal-asus"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 md:p-12 modal-root"
+    >
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity opacity-0 backdrop"
+        onclick="closeModal('modal-asus')"
+      ></div>
+      <div
+        class="modal-content relative w-full max-w-6xl max-h-[90vh] bg-surface rounded-[2rem] shadow-2xl overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95 opacity-0 duration-300 ease-out"
+      >
+        <button
+          onclick="closeModal('modal-asus')"
+          class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-surface-container-high hover:bg-outline-variant/30 rounded-full flex items-center justify-center text-on-surface z-50 transition-colors"
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div
+          class="w-full md:w-[40%] bg-surface-container-lowest p-8 pt-16 md:p-12 flex flex-col md:overflow-y-auto no-scrollbar shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/10"
+        >
+          <div
+            class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 w-max"
+          >
+            網站 / 平台
+          </div>
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-on-surface mb-6"
+          >
+            ASUS 華碩商用官方網站
+          </h2>
+          <p class="text-secondary leading-relaxed mb-8">
+            帶領團隊進行華碩商用網站的策略規劃與設計，涵蓋商業分析、UX 策略與 UI
+            設計。針對不同產業需求量身打造，提供更具關聯性且高效的網站體驗。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >B2B 網站</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >UX/UI 設計</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >商業分析</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-[60%] bg-surface p-6 md:p-10 flex flex-col md:justify-center relative md:overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-col gap-10 md:hidden pb-8">
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/ASUS/Business site.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/ASUS/Business site.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <a
+              href="https://www.asus.com/tw/business/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center justify-center gap-2 font-bold text-sm bg-primary-container text-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-colors"
+              >前往網站
+              <span class="material-symbols-outlined text-sm"
+                >open_in_new</span
+              ></a
+            >
+          </div>
+          <div
+            class="hidden md:block aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+          >
+            <div
+              class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+            >
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/ASUS/Business site.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/ASUS/Business site.png"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:flex justify-end mt-4">
+            <a
+              href="https://www.asus.com/tw/business/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 font-bold text-sm bg-primary-container text-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-colors"
+              >前往網站
+              <span class="material-symbols-outlined text-sm"
+                >open_in_new</span
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal-ford"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 md:p-12 modal-root"
+    >
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity opacity-0 backdrop"
+        onclick="closeModal('modal-ford')"
+      ></div>
+      <div
+        class="modal-content relative w-full max-w-6xl max-h-[90vh] bg-surface rounded-[2rem] shadow-2xl overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95 opacity-0 duration-300 ease-out"
+      >
+        <button
+          onclick="closeModal('modal-ford')"
+          class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-surface-container-high hover:bg-outline-variant/30 rounded-full flex items-center justify-center text-on-surface z-50 transition-colors"
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div
+          class="w-full md:w-[40%] bg-surface-container-lowest p-8 pt-16 md:p-12 flex flex-col md:overflow-y-auto no-scrollbar shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/10"
+        >
+          <div
+            class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 w-max"
+          >
+            網站 / 平台
+          </div>
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-on-surface mb-6"
+          >
+            FORD 台灣福特官網改版與 CMS 轉型
+          </h2>
+          <p class="text-secondary leading-relaxed mb-8">
+            重新打造福特台灣官方網站，從商業分析、UX/UI 設計到重新建置客製化 CMS
+            後台。此專案解決了舊有 Adobe AEM
+            的架構限制，降低維護成本，並建立更具彈性的現代化網站。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >網站改版</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >CMS 系統轉換</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >UX/UI 設計</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-[60%] bg-surface p-6 md:p-10 flex flex-col md:justify-center relative md:overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-col gap-10 md:hidden pb-8">
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/FORD/FORD-cover.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/FORD/FORD-cover.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+            <a
+              href="https://www.fordlioho.com.tw/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center justify-center gap-2 font-bold text-sm bg-primary-container text-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-colors"
+              >前往網站
+              <span class="material-symbols-outlined text-sm"
+                >open_in_new</span
+              ></a
+            >
+          </div>
+          <div
+            class="hidden md:block aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+          >
+            <div
+              class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+            >
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/FORD/FORD-cover.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/FORD/FORD-cover.png"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:flex justify-end mt-4">
+            <a
+              href="https://www.fordlioho.com.tw/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 font-bold text-sm bg-primary-container text-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-colors"
+              >前往網站
+              <span class="material-symbols-outlined text-sm"
+                >open_in_new</span
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal-samsung"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 md:p-12 modal-root"
+    >
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity opacity-0 backdrop"
+        onclick="closeModal('modal-samsung')"
+      ></div>
+      <div
+        class="modal-content relative w-full max-w-6xl max-h-[90vh] bg-surface rounded-[2rem] shadow-2xl overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95 opacity-0 duration-300 ease-out"
+      >
+        <button
+          onclick="closeModal('modal-samsung')"
+          class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-surface-container-high hover:bg-outline-variant/30 rounded-full flex items-center justify-center text-on-surface z-50 transition-colors"
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div
+          class="w-full md:w-[40%] bg-surface-container-lowest p-8 pt-16 md:p-12 flex flex-col md:overflow-y-auto no-scrollbar shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/10"
+        >
+          <div
+            class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 w-max"
+          >
+            CRM / 會員經營
+          </div>
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-on-surface mb-6"
+          >
+            Samsung 台灣三星 CRM 規劃
+          </h2>
+          <p class="text-secondary leading-relaxed mb-8">
+            主導台灣三星旗艦機上市的 CRM
+            策略規劃。透過將產品功能精準映射至不同目標受眾，分析受眾與品牌的關聯程度，規劃跨越
+            EDM、LINE 推播與 App 的多波段溝通計畫。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >CRM 策略規劃</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >受眾輪廓分析</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-[60%] bg-surface p-6 md:p-10 flex flex-col md:justify-center relative md:overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-col gap-10 md:hidden pb-8">
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/Samsung/Samsung-cover.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/Samsung/Samsung-cover.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="hidden md:block aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+          >
+            <div
+              class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+            >
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/Samsung/Samsung-cover.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/Samsung/Samsung-cover.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal-jti"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 md:p-12 modal-root"
+    >
+      <div
+        class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity opacity-0 backdrop"
+        onclick="closeModal('modal-jti')"
+      ></div>
+      <div
+        class="modal-content relative w-full max-w-6xl max-h-[90vh] bg-surface rounded-[2rem] shadow-2xl overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95 opacity-0 duration-300 ease-out"
+      >
+        <button
+          onclick="closeModal('modal-jti')"
+          class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-surface-container-high hover:bg-outline-variant/30 rounded-full flex items-center justify-center text-on-surface z-50 transition-colors"
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div
+          class="w-full md:w-[40%] bg-surface-container-lowest p-8 pt-16 md:p-12 flex flex-col md:overflow-y-auto no-scrollbar shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/10"
+        >
+          <div
+            class="inline-block bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 w-max"
+          >
+            CRM / 會員經營
+          </div>
+          <h2
+            class="text-3xl font-extrabold tracking-tight text-on-surface mb-6"
+          >
+            JTI 傑太日菸 CRM 與獎勵系統發展
+          </h2>
+          <p class="text-secondary leading-relaxed mb-8">
+            將 JTI 的服務範疇從純粹的系統維護，拓展至更廣泛的 CRM
+            與經銷商獎勵方案。藉由深化客戶在企劃與開發能力的信任，成功將專案拓展為常態性的會員經營計畫。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >CRM 策略規劃</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >獎勵系統機制</span
+            ><span
+              class="bg-surface px-3 py-1.5 rounded-md text-xs font-bold text-secondary border border-outline-variant/20"
+              >客戶關係拓展</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-[60%] bg-surface p-6 md:p-10 flex flex-col md:justify-center relative md:overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-col gap-10 md:hidden pb-8">
+            <div>
+              <div
+                class="rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest relative aspect-[16/10] flex items-center justify-center"
+              >
+                <img
+                  src="./src/Case/JTI/JTI.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  src="./src/Case/JTI/JTI.png"
+                  class="relative z-10 w-full h-full object-contain p-2"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="hidden md:block aspect-[16/10] bg-surface-container-highest rounded-2xl overflow-hidden shadow-ambient relative modal-carousel-wrapper shrink-0"
+          >
+            <div
+              class="carousel-track flex w-full h-full transition-transform duration-500 ease-in-out"
+            >
+              <div
+                class="w-full h-full shrink-0 relative overflow-hidden flex items-center justify-center bg-surface-container-highest"
+              >
+                <img
+                  src="./src/Case/JTI/JTI.png"
+                  class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                  aria-hidden="true"
+                /><img
+                  class="relative z-10 w-full h-full object-contain p-2 drop-shadow-md"
+                  src="./src/Case/JTI/JTI.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const overlay = modal ? modal.querySelector(".backdrop") : null;
+        const content = modal ? modal.querySelector(".modal-content") : null;
+        if (!modal) return;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.classList.add("modal-open");
+
+        setTimeout(() => {
+          if (overlay) {
+            overlay.classList.remove("opacity-0");
+            overlay.classList.add("opacity-100");
+          }
+          if (content) {
+            content.classList.remove("scale-95", "opacity-0");
+            content.classList.add("scale-100", "opacity-100");
+          }
+        }, 10);
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const overlay = modal ? modal.querySelector(".backdrop") : null;
+        const content = modal ? modal.querySelector(".modal-content") : null;
+        if (!modal) return;
+
+        if (overlay) {
+          overlay.classList.remove("opacity-100");
+          overlay.classList.add("opacity-0");
+        }
+        if (content) {
+          content.classList.remove("scale-100", "opacity-100");
+          content.classList.add("scale-95", "opacity-0");
+        }
+
+        setTimeout(() => {
+          modal.classList.remove("flex");
+          modal.classList.add("hidden");
+          document.body.classList.remove("modal-open");
+        }, 300);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll(".counter");
+        const numberObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                counters.forEach((counter) => {
+                  const target = +counter.getAttribute("data-target");
+                  const duration = 800;
+                  const increment = target / (duration / 16);
+                  let current = 0;
+                  const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                      counter.innerText = Math.ceil(current);
+                      requestAnimationFrame(updateCounter);
+                    } else {
+                      counter.innerText = target;
+                    }
+                  };
+                  updateCounter();
+                });
+                numberObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        const metricsSection = document.getElementById("metrics-section");
+        if (metricsSection) numberObserver.observe(metricsSection);
+
+        const careerSections = document.querySelectorAll(
+          ".career-detail-section"
+        );
+        const timelineLinks = document.querySelectorAll(".timeline-link");
+        const timelineObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                timelineLinks.forEach((link) => {
+                  link.classList.remove("border-primary", "opacity-100");
+                  link.classList.add("border-outline-variant/30", "opacity-40");
+                });
+                const currentId = entry.target.getAttribute("id");
+                const activeLink = document.querySelector(
+                  `.timeline-link[href="#${currentId}"]`
+                );
+                if (activeLink) {
+                  activeLink.classList.remove(
+                    "border-outline-variant/30",
+                    "opacity-40"
+                  );
+                  activeLink.classList.add("border-primary", "opacity-100");
+                }
+              }
+            });
+          },
+          { rootMargin: "-20% 0px -60% 0px" }
+        );
+        careerSections.forEach((section) => timelineObserver.observe(section));
+
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const caseCards = document.querySelectorAll(".case-card");
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            filterBtns.forEach((b) => {
+              b.classList.remove(
+                "bg-on-surface",
+                "text-surface",
+                "hover:bg-on-surface/90"
+              );
+              b.classList.add(
+                "text-secondary",
+                "hover:bg-surface-container-high"
+              );
+            });
+            btn.classList.add(
+              "bg-on-surface",
+              "text-surface",
+              "hover:bg-on-surface/90"
+            );
+            btn.classList.remove(
+              "text-secondary",
+              "hover:bg-surface-container-high"
+            );
+
+            const filterValue = btn.getAttribute("data-filter");
+            caseCards.forEach((card) => {
+              card.style.animation = "none";
+              card.offsetHeight;
+              if (
+                filterValue === "all" ||
+                card.getAttribute("data-category") === filterValue
+              ) {
+                card.style.display = "block";
+                card.style.animation = null;
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+
+        const carouselWrappers = document.querySelectorAll(
+          ".modal-carousel-wrapper"
+        );
+        carouselWrappers.forEach((wrapper) => {
+          const track = wrapper.querySelector(".carousel-track");
+          if (!track) return;
+
+          const slides = track.querySelectorAll(".shrink-0");
+          const slideCount = slides.length;
+          const prevBtn = wrapper.querySelector(".carousel-prev");
+          const nextBtn = wrapper.querySelector(".carousel-next");
+          const dotsContainer = wrapper.querySelector(".dots-container");
+          const dots = dotsContainer
+            ? dotsContainer.querySelectorAll(".carousel-dot")
+            : [];
+          const captionBox =
+            wrapper.parentElement.querySelector(".carousel-caption");
+          let currentIndex = 0;
+
+          if (slideCount <= 1) {
+            if (prevBtn) prevBtn.style.display = "none";
+            if (nextBtn) nextBtn.style.display = "none";
+            if (dotsContainer) dotsContainer.style.display = "none";
+            if (captionBox && slides[0])
+              captionBox.innerHTML =
+                slides[0].getAttribute("data-caption") || "";
+            return;
+          }
+
+          if (captionBox && slides[0])
+            captionBox.innerHTML = slides[0].getAttribute("data-caption") || "";
+
+          function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => {
+              if (i === currentIndex) {
+                dot.classList.remove("bg-white/60", "hover:bg-white", "w-2");
+                dot.classList.add("bg-primary", "w-4");
+              } else {
+                dot.classList.remove("bg-primary", "w-4");
+                dot.classList.add("bg-white/60", "hover:bg-white", "w-2");
+              }
+            });
+
+            if (captionBox && slides[currentIndex]) {
+              captionBox.style.opacity = 0;
+              setTimeout(() => {
+                captionBox.innerHTML =
+                  slides[currentIndex].getAttribute("data-caption") || "";
+                captionBox.style.opacity = 1;
+              }, 300);
+            }
+          }
+
+          if (prevBtn)
+            prevBtn.addEventListener("click", () => {
+              currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+              updateCarousel();
+            });
+          if (nextBtn)
+            nextBtn.addEventListener("click", () => {
+              currentIndex = (currentIndex + 1) % slideCount;
+              updateCarousel();
+            });
+          dots.forEach((dot, i) =>
+            dot.addEventListener("click", () => {
+              currentIndex = i;
+              updateCarousel();
+            })
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
